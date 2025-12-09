@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Chi tiết khách sạn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="roomdetail.css">
+</head>
+<body>
+  <script src="roomdetail.js"></script>
+  <div class="container">
+    <header class="site-header">
+      <div class="logo"><div class="mark">Roomia</div>
+        <div class="brand">
+          <strong>Roomia</strong>
+          <div class="subtitle">Chi tiết khách sạn</div>
+        </div>
+      </div>
+      <nav class="main-nav"><a href="#">Trang chủ</a></nav>
+    </header>
+
+    <!--HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-main-img">
+          <img id="mainPhoto" src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/358169129.jpg?k=471206802ff927dbc3a0f2220c55339fdd595bbd342554119809e99d63b83cc1&o=" alt="Hotel main">
+        </div>
+
+        <div class="thumbs" id="thumbs">
+          <img class="thumb" src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/359474876.jpg?k=69ad2c25407137e5ae13f4e5a6aadde937077d44f455d44be7b2ab020c2177c8&o=" alt="">
+          <img class="thumb" src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/358169138.jpg?k=620bdb71767f69c93f5257cce684ce25dfec17aab6df17e33b6c72533d71b689&o=" alt="">
+          <img class="thumb" src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/358169111.jpg?k=456dfb94e6a1957ae41042fcf328de313ca6e0819157975baaf5f8e7df0510f7&o=" alt="">
+          <img class="thumb" src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/358169158.jpg?k=bd4d4b41335cfe636bee245e629ed69a7368e94b5c0778af36642d5c2cdaa224&o=" alt="">
+        </div>
+      </div>
+
+      <div class="hotel-info">
+        <h1>Fusion Original Saigon Centre</h1>
+        <div class="hotel-meta">⭐ 4.5 · 20 Lê Lợi, Quận 1, TP. HCM · Cách trung tâm 400 m</div>
+        <p class="lead">Fusion Original Saigon Centre nằm ở trung tâm Quận 1, cách các điểm tham quan chính chỉ vài phút đi bộ. Khách sạn sở hữu thiết kế hiện đại, dịch vụ spa và hồ bơi trên tầng thượng.</p>
+
+        <div class="badges">
+          <span class="badge">Miễn phí hủy</span>
+          <span class="badge">Bữa sáng bao gồm</span>
+          <span class="badge">Nhận phòng 24/7</span>
+        </div>
+
+        <div class="highlights">
+          <div class="hl">🏊 Hồ bơi · Tầng thượng</div>
+          <div class="hl">🍽 Nhà hàng & quán cà phê</div>
+          <div class="hl">💆 Spa & massage</div>
+          <div class="hl">📶 Wifi miễn phí</div>
+        </div>
+      </div>
+    </section>
+
+    <!--ROOMS-->
+    <section class="rooms">
+      <h2>Phòng trống</h2>
+      <div class="search-bar">
+        <div class="search-item">
+          <label>Nhận phòng</label>
+          <input type="date" id="checkin">
+        </div>
+
+        <div class="search-item">
+          <label>Trả phòng</label>
+          <input type="date" id="checkout">
+        </div>
+
+        <div class="search-item">
+          <label>Người lớn</label>
+          <select id="adults">
+            <option value="1">1 người lớn</option>
+            <option value="2">2 người lớn</option>
+            <option value="3">3 người lớn</option>
+          </select>
+        </div>
+
+        <div class="search-item">
+          <label>Trẻ em</label>
+          <select id="children">
+            <option value="0">0 trẻ em</option>
+            <option value="1">1 trẻ em</option>
+            <option value="2">2 trẻ em</option>
+          </select>
+        </div>
+
+        <div class="search-item">
+          <label>Số phòng</label>
+          <select id="roomsCount">
+            <option value="1">1 phòng</option>
+            <option value="2">2 phòng</option>
+            <option value="3">3 phòng</option>
+          </select>
+        </div>
+
+        <div class="search-btn-wrap">
+          <button id="searchBtn">Tìm phòng trống</button>
+        </div>
+      </div>
+
+      <!--Room 1-->
+      <article class="room" data-room-id="r1">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=800&auto=format&fit=crop" alt="Deluxe">
+        <div class="room-body">
+          <h4>Deluxe King</h4>
+          <div class="features">1 giường King · 32 m² · Tối đa 2 khách</div>
+          <div class="muted">Bao gồm: bữa sáng, wifi, minibar</div>
+        </div>
+
+        <div class="room-actions">
+          <div class="price">1.850.000₫ <small class="per-night">/ đêm</small></div>
+          <div class="controls">
+            <select class="qty">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+            <button class="btn btn-primary book-now">Đặt phòng</button>
+          </div>
+        </div>
+      </article>
+
+      <!--Room 2-->
+      <article class="room" data-room-id="r2">
+        <img src="https://images.unsplash.com/photo-1542317854-6e9e0c4e8b3a?q=80&w=800&auto=format&fit=crop" alt="Suite">
+        <div class="room-body">
+          <h4>Suite Junior</h4>
+          <div class="features">Phòng rộng 55 m² · Giường King · Phòng khách riêng</div>
+          <div class="muted">Bao gồm: bữa sáng, trà chiều, đón sân bay tùy chọn</div>
+        </div>
+
+        <div class="room-actions">
+          <div class="price"><span class="old-price">3.500.000₫</span><div class="now-price">3.200.000₫ <small class="per-night">/ đêm</small></div></div>
+          <div class="controls">
+            <select class="qty">
+              <option value="0">0</option>
+              <option value="1">1</option>
+            </select>
+            <button class="btn btn-primary book-now">Đặt phòng</button>
+          </div>
+        </div>
+      </article>
+
+      <!--Room 3-->
+      <article class="room" data-room-id="r3">
+        <img src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?q=80&w=800&auto=format&fit=crop" alt="Twin">
+        <div class="room-body">
+          <h4>Deluxe Twin</h4>
+          <div class="features">2 giường đơn · 30 m² · Tối đa 2 khách</div>
+          <div class="muted">Miễn phí wifi • Không hoàn tiền tùy loại giá</div>
+        </div>
+
+        <div class="room-actions">
+          <div class="price">1.650.000₫ <small class="per-night">/ đêm</small></div>
+          <div class="controls">
+            <select class="qty">
+              <option value="0">0</option>
+              <option value="1">1</option>
+            </select>
+            <button class="btn btn-primary book-now">Đặt phòng</button>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!--REVIEWS-->
+    <section class="reviews">
+      <h3>Đánh giá của khách</h3>
+      <div class="review-summary">
+        <div class="big-score">8.9</div>
+        <div class="muted">Xuất sắc • 1.124 đánh giá đã xác thực</div>
+      </div>
+
+      <div class="rating-grid">
+        <div>✔ Vị trí <strong>9.2</strong></div>
+        <div>✔ Độ sạch sẽ <strong>9.0</strong></div>
+        <div>✔ Dịch vụ <strong>8.8</strong></div>
+        <div>✔ Thoải mái <strong>8.9</strong></div>
+        <div>✔ Đáng tiền <strong>8.7</strong></div>
+        <div>✔ Wifi miễn phí <strong>9.1</strong></div>
+      </div>
+
+      <div class="review-item">
+        <div class="rhead">
+          <strong>Nguyễn Văn A.</strong>
+          <span class="muted">Đã ở 3 đêm · Tháng 12/2025</span>
+        </div>
+        <div class="rbody muted">
+          Khách sạn rất sạch, vị trí cực kỳ thuận tiện, nhân viên thân thiện.
+          Bữa sáng ngon, phòng rất yên tĩnh và thoải mái.
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="rhead">
+          <strong>Trần Minh B.</strong>
+          <span class="muted">Cặp đôi · Tháng 11/2025</span>
+        </div>
+        <div class="rbody muted">
+          View đẹp, phòng rộng rãi. Hồ bơi trên cao rất chill vào ban đêm.
+          Sẽ quay lại lần sau.
+        </div>
+      </div>
+    </section>
+
+    <!--FAQ-->
+    <section class="faq">
+      <h3>Thắc mắc thường gặp</h3>
+
+      <div class="qblock">
+        <div class="q">Q: Có cho nhận phòng sớm không?</div>
+        <div class="muted">A: Tùy vào tình trạng phòng, có thể phụ thu. Vui lòng liên hệ lễ tân.</div>
+      </div>
+
+      <div class="qblock">
+        <div class="q">Q: Có cho mang thú cưng không?</div>
+        <div class="muted">A: Không cho mang thú cưng (trừ vật hỗ trợ người khuyết tật).</div>
+      </div>
+
+      <div class="ask-form">
+        <h4 class="ask-title">Bạn còn câu hỏi khác?</h4>
+        <div class="ask-box">
+          <input 
+            id="askInput" 
+            placeholder="Nhập câu hỏi của bạn về khách sạn..." 
+            class="ask-input"
+          >
+          <button class="ask-btn" id="askBtn">Gửi câu hỏi</button>
+        </div>
+        <div id="askResult" class="ask-result">
+          ✅Câu hỏi đã được gửi. Khách sạn sẽ phản hồi sớm cho bạn.
+        </div>
+      </div>
+
+    <!--XUNG QUANH-TIỆN ÍCH-->
+    <section>
+      <div class="panel">
+        <h4>Xung quanh khách sạn</h4>
+        <ul class="muted">
+          <li>Chợ Bến Thành – 850 m</li>
+          <li>Phố đi bộ Nguyễn Huệ – 500 m</li>
+          <li>Nhà thờ Đức Bà – 1.2 km</li>
+          <li>Bưu điện Trung tâm Sài Gòn – 1.3 km</li>
+          <li>Dinh Độc Lập – 1.1 km</li>
+          <li>Sông Sài Gòn – 700 m</li>
+          <li>Vincom Center – 400 m</li>
+          <li>Trung tâm thương mại Takashimaya – 300 m</li>
+          <li>Sân bay Tân Sơn Nhất – 7.5 km</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h4>Tiện ích chi tiết</h4>
+        <div class="amen-list">
+        <ul>
+          <li>Hồ bơi ngoài trời quanh năm</li>
+          <li>Spa cao cấp & massage thư giãn</li>
+          <li>Phòng gym hiện đại 24/7</li>
+          <li>Nhà hàng buffet & quầy bar tầng thượng</li>
+          <li>Dịch vụ phòng 24 giờ</li>
+          <li>Wifi tốc độ cao miễn phí toàn khách sạn</li>
+          <li>Bãi đỗ xe riêng miễn phí</li>
+          <li>Lễ tân 24/7 hỗ trợ đa ngôn ngữ</li>
+          <li>Dịch vụ giặt ủi trong ngày</li>
+          <li>Phòng họp & tổ chức sự kiện</li>
+          <li>Khu vui chơi trẻ em</li>
+          <li>Thang máy riêng cho khách lưu trú</li>
+        </ul>
+        </div>
+      </div>
+    </section>
+
+    <!--QUY ĐỊNH-GHI CHÚ-->
+    <section>
+      <div class="panel">
+        <h4>Quy tắc chung</h4>
+        <ul class="muted">
+          <li>Check-in: 14:00</li>
+          <li>Check-out: 12:00</li>
+          <li>Không hút thuốc trong phòng</li>
+          <li>Không mang thú cưng</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h4>Ghi chú khách sạn</h4>
+        <ul class="muted">
+          <li>Phí dịch vụ và thuế đã hoặc chưa bao gồm tùy loại phòng</li>
+          <li>Phụ thu khi yêu cầu giường phụ hoặc nôi em bé</li>
+          <li>Yêu cầu đặt trước nếu cần đưa đón sân bay</li>
+          <li>Chính sách hủy phòng khác nhau theo từng loại giá</li>
+          <li>Khách từ 18 tuổi trở lên mới được tự đặt phòng</li>
+          <li>Các yêu cầu đặc biệt (view đẹp, tầng cao) phụ thuộc tình trạng thực tế</li>
+          <li>Có khuyến mãi theo mùa — vui lòng theo dõi trên website</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+  <div id="modalRoot" style="display:none"></div>
+</body>
+</html>
