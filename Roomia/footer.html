@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roomia - Footer</title>
+    <style>
+        body {font-family: Arial, sans-serif; margin: 0; padding: 0}
+
+        footer {
+            background: #0000001A;
+            color: black;
+            padding: 40px 60px 10px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(180px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        footer label {font-size: 18px; margin-bottom: 15px; font-weight: 700; cursor: pointer}
+
+        footer ul {list-style: none; padding: 10px 0 0 0; margin: 0}
+
+        footer ul li {margin-bottom: 8px}
+
+        footer ul li a {
+            color: black;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.25s;
+        }
+
+        footer ul li a:hover {
+            color: #003B95;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 5px;
+            font-size: 14px;
+            color: black;
+        }
+
+        .toggle {display: none} /* Ẩn checkbox trên mọi kích thước màn hình */
+
+        @media (max-width: 720px) {
+            .footer-grid {grid-template-columns: 1fr; gap: 20px}
+
+            /* Ẩn toàn bộ UL mặc định */
+            footer ul {display: none; transition: 0.25s ease}
+
+            /* Khi checkbox được tick → hiện UL */
+            .toggle:checked + label + ul {display: block}
+
+            /* Thêm dấu + và - ở tiêu đề */
+            label {
+                cursor: pointer;
+                font-size: 18px;
+                font-weight: bold;
+                display: block;
+                position: relative;
+            }
+
+            label::after {
+                content: "+";
+                position: absolute;
+                right: 0;
+                top: 0;
+                font-size: 20px;
+                transition: 0.25s;
+            }
+
+            /* Khi mở dropdown đổi dấu thành "-" */
+            .toggle:checked + label::after {content: "-"}
+        }
+
+    </style>
+</head>
+<body>
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <input type="checkbox" id="f1" class="toggle">
+                <label for="f1">HỖ TRỢ</label>
+                <ul>
+                    <li><a href="#">Quản lý các chuyến đi của bạn</a></li>
+                    <li><a href="#">Liên hệ dịch vụ khách hàng</a></li>
+                    <li><a href="#">Trung tâm thông tin bảo mật</a></li>
+                </ul>
+            </div>
+            <div>
+                <input type="checkbox" id="f2" class="toggle">
+                <label for="f2">KHÁM PHÁ THÊM</label>
+                <ul>
+                    <li><a href="#">Chương trình khách hàng thân thiết Roomia</a></li>
+                    <li><a href="#">Liên hệ dịch vụ khách hàng</a></li>
+                </ul>
+            </div>
+            <div>
+                <input type="checkbox" id="f3" class="toggle">
+                <label for="f3">ĐIỀU KHOẢN</label>
+                <ul>
+                    <li><a href="#">Chính sách bảo mật & Cookie</a></li>
+                    <li><a href="#">Điều khoản dịch vụ</a></li>
+                </ul>
+            </div>
+            <div>
+                <input type="checkbox" id="f4" class="toggle">
+                <label for="f4">DÀNH CHO ĐỐI TÁC</label>
+                <ul>
+                    <li><a href="#">Trợ giúp đối tác</a></li>
+                    <li><a href="#">Trở thành đối tác phân phối</a></li>
+                    <li><a href="#">Đăng chỗ nghỉ của Quý vị</a></li>
+                </ul>
+            </div>
+            <div>
+                <input type="checkbox" id="f5" class="toggle">
+                <label for="f5">VỀ CHÚNG TÔI</label>
+                <ul>
+                    <li><a href="#">Về Roomia</a></li>
+                    <li><a href="#">Liên hệ công ty</a></li>
+                    <li><a href="#">Hoạt động của chúng tôi</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">Bản quyền © 2025 Roomia™. Bảo lưu mọi quyền.</div>
+    </footer>
+
+</body>
+</html>

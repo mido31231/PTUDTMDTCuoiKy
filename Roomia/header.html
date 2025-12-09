@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roomia - Header</title>
+    <style>
+        body {font-family: Arial, sans-serif; margin: 0; padding: 0; }
+
+        /* HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #003B95;
+        }
+
+        .top-links a {
+            text-decoration: none;
+            padding: 8px 14px;
+            margin-left: 10px;
+            border-radius: 15px;
+            font-size: 15px;
+            font-weight: 600;
+            border: 2px solid #003B95;
+        }
+
+        /* Đăng chỗ ở: nền trắng - chữ xanh */
+        .post-room {
+            color: #003B95;
+            background: #ffffff;
+        }
+
+        /* Đăng nhập, Đăng ký: nền xanh - chữ trắng */
+        .login-btn, .register-btn {
+            background: #003B95;
+            color: #ffffff;
+        }
+
+        nav {
+            background: #ffffff;
+            padding: 14px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-weight: 700;
+            color: #003B95;
+            font-size: 17px;
+        }
+
+        @media (max-width: 720px) {
+            /* Ẩn tất cả menu từ mục thứ 4 trở đi */
+            nav ul li:nth-child(n+4) {display: none;}
+            /* Ẩn nút đăng chỗ ở */
+            .post-room {display: none}
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER TOP BAR -->
+    <header>
+        <div class="logo">Roomia</div>
+        <div class="top-links">
+            <a href="#" class="post-room">Đăng chỗ ở của bạn</a>
+            <a href="#" class="login-btn">Đăng nhập</a>
+            <a href="#" class="register-btn">Đăng ký</a>
+        </div>
+    </header>
+
+    <!-- MENU -->
+    <nav>
+        <ul>
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Lưu trú</a></li>
+            <li><a href="#">Ưu đãi</a></li>
+            <li><a href="#">Điểm đến</a></li>
+            <li><a href="#">Tin tức</a></li>
+            <li><a href="#">Về chúng tôi</a></li>
+            <li><a href="#">Liên hệ</a></li>
+        </ul>
+    </nav>
+
+</body>
+</html>

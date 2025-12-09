@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root{
+            --primary:#003B95;
+            --card-bg:#ffffff;
+            --radius:12px;
+            --max-width:1200px;
+            --gap:20px;
+            --shadow: 0 6px 18px rgba(2,15,53,0.08);
+            font-family: Arial, sans-serif;
+        }
+
+        *{box-sizing:border-box}
+  
+        body{margin:0;background:white;color:#003B95}
+    
+        .container{max-width:var(--max-width);margin:0 auto;padding:30px}
+
+        /* HERO / POSTER */
+        .hero{display:grid;grid-template-columns:1fr;gap:20px;align-items:center;margin-top:5px;}
+        .hero-inner{
+            background-image: url(https://puolotrip.com/uploads/images/2023/09/Bien-nha-trang-2-jpg.webp);
+            background-size:cover;
+            background-position:center;
+            background-repeat:no-repeat;
+            color:white;
+            padding:80px 36px;
+            border-radius:16px;
+            min-height:320px;
+            display:flex;
+            align-items:center;
+        }
+        .hero-grid{display:flex;flex-direction:column;gap:18px}
+        .hero h1{margin:0;line-height:1.05}
+        .hero p.lead{margin:0;opacity:.95}
+        .hero .cta{display:inline-block;margin-top:6px;padding:12px 18px;border-radius:10px;background:white;color:var(--primary);font-weight:600;text-decoration:none;box-shadow:var(--shadow)}
+
+        /* SEARCH / BOOKING FORM */
+        .booking{background:#F6A100;padding:18px;border-radius:14px;margin-top:36px;box-shadow:var(--shadow);display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+        .booking .field{flex:1;min-width:140px}
+        .booking label{display:block;font-size:14px;color:#000000;margin-bottom:6px;font-weight:700;}
+        .booking input,.booking select{width:100%;padding:10px 12px;border-radius:8px;border:1px solid #e6eefb;background:#fcfeff}
+        .booking .btn-search{background:var(--primary);color:white;padding:12px 18px;margin-top:25px;border-radius:10px;border:none;font-weight:700;cursor:pointer}
+
+        /* SECTIONS */
+        section{margin:50px 0}
+        h2.section-title{font-size:18px;margin:0 0 12px 0;color:var(--primary)}
+
+        /* Recent searches */
+        .recent{display:flex;gap:10px;flex-wrap:wrap}
+        .chip{background:#e8effa;padding:8px 12px;border-radius:10px;font-size:14px}
+
+        /* Cards grid */
+        .grid{display:grid;grid-template-columns:repeat(1,1fr);gap:16px}
+        .cards{display:grid;grid-template-columns:repeat(1,1fr);gap:16px}
+        .card{background:var(--card-bg);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);display:flex;gap:12px}
+        .card img{width:160px;height:110px;object-fit:cover;flex-shrink:0}
+        .card-body{padding:12px;display:flex;flex-direction:column;justify-content:space-between}
+        .meta{font-size:13px;color:#7b8aa3}
+        .rating{font-weight:700;color:#0a3b83}
+
+        /* Why choose */
+        .roomia{background-color: #003B95}
+        .roomia h2{color:white;padding:15px}
+        .why{display:grid;grid-template-columns:1fr;gap:12px}
+        .features{display:flex;flex-wrap:wrap;gap:12px}
+        .feature{flex:1 1 160px;background:white;padding:10px;margin:0 10px 10px 5px;border-radius:10px}
+        .feature h3{font-size: 14px;color:black;font-weight:700}
+        .feature h5{font-size: 12px;color:rgb(145, 145, 145)}
+
+        /* Offers */
+        .offers{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+        .offer{position:relative;border-radius:12px;overflow:hidden;height:200px}
+        .offer img{width:100%;height:100%;object-fit:cover}
+        .offer .overlay{position:absolute;left:0;right:0;bottom:0px;padding:8px;background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%);color:white}
+        .offer .cta{background:white;color:var(--primary);padding:5px;margin-top:5px;border-radius:10px;border:none;font-size:14px;font-weight:700;cursor:pointer}
+
+        /* Trending destinations*/
+        .trending{display:grid;grid-template-columns:repeat(3,2fr);gap:12px}
+        .trend{position:relative;border-radius:12px;overflow:hidden;height:180px}
+        .trend img{width:100%;height:100%;object-fit:cover;filter:brightness(.6)}
+        .trend .place{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+        .trend .place h3{color:white;font-size:24px;text-transform:uppercase;letter-spacing:1px;margin:0;text-align:center}
+
+        /* Collections */
+        .collections{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+        .collection{display:flex;flex-direction:column;border-radius:12px;box-shadow:var(--shadow)}
+        .collection .image-box{height: 150px;border-radius: 10px;overflow: hidden}
+        .collection img{width:100%;height:100%;object-fit:cover}
+        .collection .label{margin:10px;color:#000;font-weight:700;font-size:15px;text-align:center}
+
+        /* Explore Vietnam */
+        .explore{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+        .vn-card{border-radius:12px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.1);background:#fff;transition:0.25s}
+        .vn-card img{width:100%;height:200px;object-fit:cover}
+        .vn-info{padding:14px}
+        .vn-info h3{margin:0;font-size:18px;color:black}
+        .vn-info p{margin:4px 0 0;font-size:14px;color:#5a6b86}
+
+        /* Responsive rules */
+        @media(min-width:720px){
+            .hero{grid-template-columns:1fr}
+            .hero-inner{display:flex;align-items:center}
+            .hero{grid-template-columns:1fr}
+            .hero-inner{display:flex;align-items:center}
+            .hero-grid{flex:1}
+            .cards{grid-template-columns:repeat(2,1fr)}
+            .grid{grid-template-columns:repeat(2,1fr)}
+            .offers{grid-template-columns:repeat(2,1fr)}
+            .explore{grid-template-columns:repeat(3,1fr)} 
+        }
+
+        @media(min-width:980px){
+            .hero{grid-template-columns:1fr}
+            .hero-inner{padding:56px}
+            .cards{grid-template-columns:repeat(3,1fr)}
+            .grid{grid-template-columns:repeat(3,1fr)}
+            .offers{grid-template-columns:repeat(3,1fr)}
+            .trending{grid-template-columns:repeat(3,2fr)}
+            .collections{grid-template-columns:repeat(5,1fr)}
+            .explore{grid-template-columns:repeat(6,1fr)}
+        }
+
+        /* small screens */
+        @media(max-width:420px){
+            .booking{padding:12px}
+            .hero-inner{padding:20px;border-radius:12px}
+        }
+
+        /* small stylistic tweaks */
+        .muted{color:#5a6b86}
+        .small{font-size:13px}
+
+        /* utilities */
+        .gap-sm{height:12px}
+        a{text-decoration:none}
+    </style>
+</head>
+<body>
+    <iframe src="header.html" frameborder="0" style="width:100%; height:120px;"></iframe>
+
+    <div class="container">
+        <!-- POSTER -->
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="hero-grid">
+                    <h1>KHÁM PHÁ KỲ NGHỈ HOÀN HẢO</h1>
+                    <p class="lead">Hơn 500+ phòng nghỉ cao cấp tại Việt Nam</p>
+                    <div>
+                        <a class="cta" href="#booking">Đặt ngay</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOOKING FORM -->
+        <section class="booking-section">
+            <form id="booking" class="booking" role="search" aria-label="Tìm phòng">
+                <div class="field">
+                    <label for="place">Địa điểm</label>
+                    <input id="place" name="place" type="text" placeholder="Tên thành phố, khách sạn..." />
+                </div>
+
+                <div class="field">
+                    <label for="checkin">Ngày nhận</label>
+                    <input id="checkin" name="checkin" type="date" />
+                </div>
+
+                <div class="field">
+                    <label for="checkout">Ngày trả</label>
+                    <input id="checkout" name="checkout" type="date" />
+                </div>
+
+                <div class="field">
+                    <label for="guests">Số người</label>
+                    <select id="guests" name="guests">
+                        <option>1 người</option>
+                        <option>2 người</option>
+                        <option>3 người</option>
+                        <option>4 người</option>
+                    </select>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn-search">Tìm phòng</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- RECENT SEARCHES -->
+        <section>
+        <h2 class="section-title">TÌM KIẾM GẦN ĐÂY</h2>
+        <div class="recent">
+            <div class="chip">Hà Nội</div>
+            <div class="chip">Đà Nẵng</div>
+            <div class="chip">Hội An</div>
+            <div class="chip">Nha Trang</div>
+            <div class="chip">TP.HCM</div>
+        </div>
+        </section>
+
+        <!-- Những điểm dừng chân -->
+        <section>
+        <h2 class="section-title">NHỮNG ĐIỂM DỪNG CHÂN CHỜ BẠN KHÁM PHÁ</h2>
+        <div class="cards">
+            <!-- card 1 -->
+            <article class="card">
+            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/203720383.jpg?k=957aff0b81ab65e0e9d42e42e1210d41991b29a7cbd7a967187eb1f6c1d1d86a&o=" alt="Sea view hotel"/>
+            <div class="card-body">
+                <div>
+                <strong>Hon Tam Resort</strong>
+                <div class="meta">Nha Trang, Việt Nam</div>
+                </div>
+                <div class="small">⭐ <span class="rating">4.7</span> · 1.2k đánh giá</div>
+            </div>
+            </article>
+            <!-- card 2 -->
+            <article class="card">
+            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/692162790.jpg?k=3d73c58919fc34b0cbd9ba868876039b051110040e419241307510be16886c61&o=" alt="City boutique"/>
+            <div class="card-body">
+                <div>
+                <strong>Ben's Premier Hotel & Apartment</strong>
+                <div class="meta">Hà Nội, Việt Nam</div>
+                </div>
+                <div class="small">⭐ <span class="rating">4.6</span> · 900 đánh giá</div>
+            </div>
+            </article>
+            <!-- card 3 -->
+            <article class="card">
+            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/762847831.jpg?k=fe55ee5208fbb9ccc0dd4dbd411d1a793156948fe5c68603adcd0bffdaafce4d&o=" alt="Mountain lodge"/>
+            <div class="card-body">
+                <div>
+                <strong>Khu Du Lịch Sinh Thái Vườn Đá Tả Phìn</strong>
+                <div class="meta">Sapa, Việt Nam</div>
+                </div>
+                <div class="small">⭐ <span class="rating">4.8</span> · 2.1k đánh giá</div>
+            </div>
+            </article>
+        </div>
+        </section>
+
+        <!-- Vì sao chọn Roomia -->
+        <section class="roomia">
+        <h2 class="section-title">VÌ SAO LÀ ROOMIA?</h2>
+        <div class="why">
+            <div class="features">
+            <div class="feature">
+                <i class="fa-solid fa-map-location-dot fa-3x" style="color: #adf7b6;"></i>
+                <h3>Đặt bây giờ, thanh toán tại chỗ nghỉ</h3>
+                <h5>MIỄN PHÍ hủy cho hầu hết các phòng</h5>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-thumbs-up fa-3x" style="color: #ffc09f;"></i>
+                <h3>Hơn 300 ngàn đánh giá từ khách khác</h3>
+                <h5>Tham khảo thông tin đáng tin cậy từ du khách như bạn</h5>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-earth-asia fa-3x" style="color: #ffee93;"></i>
+                <h3>Hơn 20 ngàn chỗ nghỉ toàn cầu</h3>
+                <h5>Khách sạn, guest house, căn hộ và nhiều loại chỗ ở khác...</h5>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-comment-dots fa-3x" style="color: #79adcc;"></i>
+                <h3>Dịch vụ khách hàng đáng tin cậy, hoạt động 24/7</h3>
+                <h5>Chúng tôi luôn sẫn sàng giúp đỡ bạn</h5>
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- OFFERS -->
+        <section>
+        <h2 class="section-title">ƯU ĐÃI</h2>
+        <div class="offers">
+            <div class="offer">
+            <img src="https://youshouldgohere.com/wp-content/uploads/2018/10/DSC03990-1.jpg" alt="offer 1"/>
+            <div class="overlay">
+                <strong>Ưu đãi cuối tuần</strong>
+                <p class="small">Giảm đến 30% cho các đặt phòng 2 đêm trở lên.</p>
+                <a class="cta" href="#booking">Đặt ngay</a>
+            </div>
+            </div>
+            <div class="offer">
+            <img src="https://img.traveltriangle.com/blog/wp-content/uploads/2023/05/Best-Resorts-in-Maldives-for-Indian-Travelers.jpg" alt="offer 2"/>
+            <div class="overlay">
+                <strong>Combo gia đình</strong>
+                <p class="small">Phòng gia đình + bữa sáng miễn phí.</p>
+                <a class="cta" href="#booking">Đặt ngay</a>
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- TRENDING DESTINATIONS -->
+        <section>
+        <h2 class="section-title">ĐIỂM ĐẾN ĐANG THỊNH HÀNH</h2>
+        <div class="trending">
+            <div class="trend">
+            <img src="https://cellphones.com.vn/sforum/wp-content/uploads/2024/01/dia-diem-du-lich-o-ha-noi-1.jpg" alt="Hanoi"/>
+            <div class="place"><h3>HÀ NỘI</h3></div>
+            </div>
+            <div class="trend">
+            <img src="https://www.tuannguyentravel.com/data/images/images2022/c%E1%BA%A7u-r%E1%BB%93ng-%C4%91%C3%A0-n%E1%BA%B5ng-ivivu-4.jpg" alt="Da Nang"/>
+            <div class="place"><h3>ĐÀ NẴNG</h3></div>
+            </div>
+            <div class="trend">
+            <img src="https://bcp.cdnchinhphu.vn/334894974524682240/2022/4/30/tphcm4-16512086615091761780817-16512794538561271403949.jpg" alt="Ho Chi Minh"/>
+            <div class="place"><h3>HỒ CHÍ MINH</h3></div>
+            </div>
+        </div>
+        </section>
+
+        <!-- COLLECTIONS -->
+        <section>
+        <h2 class="section-title">BỘ SƯU TẬP NƠI Ở</h2>
+        <div class="collections">
+            <div class="collection">
+            <div class="image-box"><img src="https://www.myluxoria.com/storage/app/uploads/public/630/77d/1e4/63077d1e4e7a2970728706.jpg" alt="Villa"/></div>
+            <div class="label">Villa</div>
+            </div>
+            <div class="collection">
+            <div class="image-box"><img src="https://khonhamaudep.com/wp-content/uploads/2024/11/mau-nha-homestay-dep-22.jpg" alt="Homestay"/></div>
+            <div class="label">Homestay</div>
+            </div>
+            <div class="collection">
+            <div class="image-box"><img src="https://vntimetravel.com/media/wysiwyg/Intercontinantal-Phu-Quoc-r.jpg" alt="Resort"/></div>
+            <div class="label">Resort</div>
+            </div>
+            <div class="collection">
+            <div class="image-box"><img src="https://static.independent.co.uk/2025/04/07/14/09/HS-MBH-Exterior-03.jpg" alt="Hotel"/></div>
+            <div class="label">Hotel</div>
+            </div>
+            <div class="collection">
+            <div class="image-box"><img src="https://cdn.luatvietnam.vn/uploaded/Images/Original/2022/12/24/tieu-chuan-thiet-ke-chung-cu-1_2412192939.jpg" alt="Căn hộ"/></div>
+            <div class="label">Căn hộ</div>
+            </div>
+        </div>
+        </section>
+
+        <!-- EXPLORE VIETNAM -->
+        <section>
+        <h2 class="section-title">KHÁM PHÁ VIỆT NAM</h2>
+        <div class="explore">
+            <div class="vn-card">
+            <img src="https://ik.imagekit.io/tvlk/dam/i/01k3wtedg6ne0a0ysg2vjps0t4.png?tr=q-70,c-at_max,w-1000,h-600" alt="Hà Nội"/>
+            <div class="vn-info">
+                <h3>Hà Nội</h3>
+                <p>200+ chỗ nghỉ</p>
+            </div>
+            </div>
+            <div class="vn-card">
+            <img src="https://images2.thanhnien.vn/528068263637045248/2025/3/20/tru-so-ubnd-tphcm--17424685517241641978739.jpg" alt="TP.HCM"/>
+            <div class="vn-info">
+                <h3>TP.HCM</h3>
+                <p>250+ chỗ nghỉ</p>
+            </div>
+            </div>
+            <div class="vn-card">
+            <img src="https://media.vneconomy.vn/w800/images/upload/2025/05/16/1-1.jpg" alt="Nha Trang"/>
+            <div class="vn-info">
+                <h3>Nha Trang</h3>
+                <p>500+ chỗ nghỉ</p>
+            </div>
+            </div>
+            <div class="vn-card">
+            <img src="https://ik.imagekit.io/tvlk/blog/2022/06/ban-do-du-lich-da-nang-10.jpg" alt="Đà Nẵng"/>
+            <div class="vn-info">
+                <h3>Đà Nẵng</h3>
+                <p>300+ chỗ nghỉ</p>
+            </div>
+            </div>
+            <div class="vn-card">
+            <img src="https://www.dalattrip.com/dulich/media/2017/12/thanh-pho-da-lat.jpg" alt="Đà Lạt"/>
+            <div class="vn-info">
+                <h3>Đà Lạt</h3>
+                <p>200+ chỗ nghỉ</p>
+            </div>
+            </div>
+            <div class="vn-card">
+            <img src="https://lalago.vn/wp-content/uploads/2025/05/phu-quoc-thuoc-tinh-nao-3.jpg" alt="Phú Quốc"/>
+            <div class="vn-info">
+                <h3>Phú Quốc</h3>
+                <p>500+ chỗ nghỉ</p>
+            </div>
+            </div>
+        </div>
+        </section>
+    </div>
+
+    <iframe src="footer.html" frameborder="0" style="width:100%; height:300px;"></iframe>
+</body>
+</html>

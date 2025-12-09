@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {margin:0;background:white;color:#003B95}
+
+        *{box-sizing:border-box}
+
+        .container {
+            display: grid;
+            grid-template-columns: 20% 80%;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .booking{background:#F6A100;padding:18px;border-radius:14px;margin:30px 15px 10px 15px;box-shadow:var(--shadow);display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+        .booking .field{flex:1;min-width:140px}
+        .booking label{display:block;font-size:14px;color:#000000;margin-bottom:6px;font-weight:700;}
+        .booking input,.booking select{width:100%;padding:10px 12px;border-radius:8px;border:1px solid #e6eefb;background:#fcfeff}
+        .booking .btn-search{background:#003B95;color:white;padding:12px 18px;margin-top:25px;border-radius:10px;border:none;font-weight:700;cursor:pointer}
+
+        /* ================= FILTER ================= */
+        .filter {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(2,15,53,0.08);
+            height: fit-content;
+        }
+
+        .filter h3 {margin-top: 0;margin-bottom: 15px}
+
+        .filter-group {margin-bottom: 20px}
+
+        .filter-group label {font-weight: bold; display: block; margin-bottom: 6px}
+
+        .checkbox {margin: 7px 3px; color: #444}
+
+        .price-range{display:flex; gap:8px}
+
+        .price-range input[type="number"]{
+            width:100%;
+            padding:8px;
+            border-radius:8px;
+            border:1px solid #e8e8e8;
+            font-size:14px;
+        }
+
+        /* ================= ROOM CARD ================= */
+        .room-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: 35% 40% 25%;
+            gap: 15px;
+            align-items: start;
+            margin: 15px;
+            border: 1px solid #ddd;
+        }
+
+        .room-img img {width: 100%; border-radius: 10px; height: 100%; object-fit: cover;}
+
+        /* INFO */
+        .hotel-name {margin: 10px; font-size: 20px; font-weight: bold}
+
+        .location {margin: 10px; color: #666}
+
+        .location a {color: #006ce4; text-decoration: none}
+
+        .distance {margin-left: 8px; font-size: 14px; color: #000000}
+
+        .beach {font-size: 14px; color: #000000}
+
+        .tags {margin: 15px 0 25px 10px}
+
+        .tags span {background:#F6A100; color: white; font-weight: bold; padding: 3px}
+
+        .room-type p {font-size: 14px; color:#666; margin: 10px}
+
+        .room-type p strong {font-size: 16px; font-weight: 700; color:#000000}
+
+        .free {color: #008009; font-size: 16px; font-weight: bold; margin: 25px 0 0 10px}
+
+        .warning {color: red; font-size: 16px; font-weight: bold; margin: 10px}
+
+        /* RIGHT SIDE PRICE + RATING */
+        .room-price {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+            margin-right: 35px;
+            min-width: 0;
+            white-space: normal; 
+        }
+
+        .rating {
+            display: flex; 
+            align-items: center;
+            gap: 10px;
+            width: auto;
+        }
+
+        .rate-count {
+            font-size: 16px;
+            text-align: right;
+            color: #000000;
+            line-height: 1.2;
+        }
+
+        .rate-score {
+            background: #003B95;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 17px;
+            margin-bottom: 20px;
+        }
+
+        /* PRICE */
+        .old-price {color: #d60000; text-decoration: line-through; font-size: 17px; margin: 12px 0 4px 0}
+
+        .new-price {font-size: 22px; font-weight: 700; margin: 4px 0}
+
+        .tax {font-size: 14px; color: #505050; margin: 4px 0}
+
+        /* BUTTON */
+        .btn {
+            margin-top: 45px;
+            padding: 10px 20px;
+            background: #003B95;
+            color: white;
+            border: none;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .btn:hover {background: #002967}
+
+        section{margin:30px 15px 15px 15px}
+        h2.section-title{font-size:18px;margin:0 0 12px 0;color:#003B95}
+        .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+        .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+        .card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(2,15,53,0.08);display:flex;gap:12px}
+        .card img{width:200px;height:150px;object-fit:cover;flex-shrink:0;margin:10px 0 10px 5px}
+        .card-body{padding:12px;display:flex;flex-direction:column;justify-content:space-between}
+        .meta{font-size:13px;color:#7b8aa3}
+        .rating{font-weight:700;color:#0a3b83}
+
+    </style>
+</head>
+<body>
+    <iframe src="header.html" frameborder="0" style="width:100%; height:120px;"></iframe>
+
+    <section class="booking-section">
+            <form id="booking" class="booking" role="search" aria-label="Tìm phòng">
+                <div class="field">
+                    <label for="place">Địa điểm</label>
+                    <input id="place" name="place" type="text" placeholder="Tên thành phố, khách sạn..." />
+                </div>
+
+                <div class="field">
+                    <label for="checkin">Ngày nhận</label>
+                    <input id="checkin" name="checkin" type="date" />
+                </div>
+
+                <div class="field">
+                    <label for="checkout">Ngày trả</label>
+                    <input id="checkout" name="checkout" type="date" />
+                </div>
+
+                <div class="field">
+                    <label for="guests">Số người</label>
+                    <select id="guests" name="guests">
+                        <option>1 người</option>
+                        <option>2 người</option>
+                        <option>3 người</option>
+                        <option>4 người</option>
+                    </select>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn-search">Tìm phòng</button>
+                </div>
+            </form>
+        </section>
+
+    <div class="container">
+
+        <!-- ================= FILTER LEFT ================= -->
+        <aside class="filter">
+            <h3>BỘ LỌC</h3>
+
+            <div class="filter-group">
+                <label class="section-title">Khoảng giá/đêm</label>
+                    <div class="price-range">
+                        <input type="number" placeholder="₫ từ" />
+                        <input type="number" placeholder="₫ đến" />
+                    </div>
+            </div>
+
+            <div class="filter-group">
+                <label>Khoảng cách từ trung tâm</label>
+                <div class="checkbox"><input type="checkbox">Dưới 500m</div>
+                <div class="checkbox"><input type="checkbox">Dưới 1km</div>
+                <div class="checkbox"><input type="checkbox">Dưới 2km</div>
+            </div>
+
+            <div class="filter-group">
+                <label>Loại chỗ ở</label>
+                <div class="checkbox"><input type="checkbox">Khách sạn</div>
+                <div class="checkbox"><input type="checkbox">Homestay</div>
+                <div class="checkbox"><input type="checkbox">Nhà & căn hộ nguyên căn</div>
+                <div class="checkbox"><input type="checkbox">Biệt thự</div>
+                <div class="checkbox"><input type="checkbox">Resort</div>
+            </div>
+
+            <div class="filter-group">
+                <label>Tiện nghi</label>
+                <div class="checkbox"><input type="checkbox">Chỗ đỗ xe</div>
+                <div class="checkbox"><input type="checkbox">Nhà hàng</div>
+                <div class="checkbox"><input type="checkbox">Wifi miễn phí</div>
+                <div class="checkbox"><input type="checkbox">Đưa đón sân bay</div>
+            </div>
+
+            <div class="filter-group">
+                <label>Xếp hạng sao</label>
+                <div class="checkbox"><input type="checkbox">⭐⭐⭐⭐⭐</div>
+                <div class="checkbox"><input type="checkbox">⭐⭐⭐⭐</div>
+                <div class="checkbox"><input type="checkbox">⭐⭐⭐</div>
+            </div>
+        </aside>
+
+    <!-- ================= RIGHT LIST ================= -->
+        <main class="list">
+
+            <!-- ==== ROOM ITEM ==== -->
+            <div class="room-card">
+
+                <div class="room-img">
+                    <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/199159931.jpg?k=7794e2499a9f0868a22be998605cc85a6780dee2772bac118fd645aee8d8e37a&o=" alt="">
+                </div>
+
+                <div class="room-info">
+                    <h2 class="hotel-name">HOTEL_NAME</h2>
+                    <div class="location">
+                        <a href="#">City</a> · <a href="#">Xem trên bản đồ</a>  
+                        <span class="distance">Cách trung tâm 0.8km</span>
+                        <br><span class="beach">Cách biển 1.2km</span>
+                    </div>
+
+                    <div class="tags"><span>Ưu Đãi Có Hạn</span></div>
+
+                    <div class="room-type">
+                        <p><strong>Phòng Superior Giường Đôi</strong></p>
+                        <p>1 giường đôi lớn</p>
+                    </div>
+
+                    <div class="features">
+                        <p class="free">✔ Miễn phí hủy</p>
+                        <p class="warning">Chỉ còn 2 phòng với giá này trên Roomia</p>
+                    </div>
+                </div>
+
+                <div class="room-price">
+                    <div class="rating">
+                        <span class="rate-count">289 đánh giá</span>
+                        <div class="rate-score">8.6</div>
+                    </div>
+
+                    <div class="price-box">
+                        <p class="old-price">VND 12.600.000</p>
+                        <p class="new-price">VND 8.820.000</p>
+                        <p class="tax">Đã bao gồm thuế và phí</p>
+
+                        <button class="btn">Xem chỗ trống</button>
+                    </div>
+
+                </div>
+            </div>
+
+        <!-- ==== COPY ROOM-CARD THÊM ... ==== -->
+            <div class="room-card">
+
+                <div class="room-img">
+                    <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/199159931.jpg?k=7794e2499a9f0868a22be998605cc85a6780dee2772bac118fd645aee8d8e37a&o=" alt="">
+                </div>
+
+                <div class="room-info">
+                    <h2 class="hotel-name">HOTEL_NAME</h2>
+                    <div class="location">
+                        <a href="#">City</a> · <a href="#">Xem trên bản đồ</a>  
+                        <span class="distance">Cách trung tâm 0.8km</span>
+                        <br><span class="beach">Cách biển 1.2km</span>
+                    </div>
+
+                    <div class="tags"><span>Ưu Đãi Có Hạn</span></div>
+
+                    <div class="room-type">
+                        <p><strong>Phòng Superior Giường Đôi</strong></p>
+                        <p>1 giường đôi lớn</p>
+                    </div>
+
+                    <div class="features">
+                        <p class="free">✔ Miễn phí hủy</p>
+                        <p class="warning">Chỉ còn 2 phòng với giá này trên Roomia</p>
+                    </div>
+                </div>
+
+                <div class="room-price">
+                    <div class="rating">
+                        <span class="rate-count">289 đánh giá</span>
+                        <div class="rate-score">8.6</div>
+                    </div>
+
+                    <div class="price-box">
+                        <p class="old-price">VND 12.600.000</p>
+                        <p class="new-price">VND 8.820.000</p>
+                        <p class="tax">Đã bao gồm thuế và phí</p>
+
+                        <button class="btn">Xem chỗ trống</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="room-card">
+
+                <div class="room-img">
+                    <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/199159931.jpg?k=7794e2499a9f0868a22be998605cc85a6780dee2772bac118fd645aee8d8e37a&o=" alt="">
+                </div>
+
+                <div class="room-info">
+                    <h2 class="hotel-name">HOTEL_NAME</h2>
+                    <div class="location">
+                        <a href="#">City</a> · <a href="#">Xem trên bản đồ</a>  
+                        <span class="distance">Cách trung tâm 0.8km</span>
+                        <br><span class="beach">Cách biển 1.2km</span>
+                    </div>
+
+                    <div class="tags"><span>Ưu Đãi Có Hạn</span></div>
+
+                    <div class="room-type">
+                        <p><strong>Phòng Superior Giường Đôi</strong></p>
+                        <p>1 giường đôi lớn</p>
+                    </div>
+
+                    <div class="features">
+                        <p class="free">✔ Miễn phí hủy</p>
+                        <p class="warning">Chỉ còn 2 phòng với giá này trên Roomia</p>
+                    </div>
+                </div>
+
+                <div class="room-price">
+                    <div class="rating">
+                        <span class="rate-count">289 đánh giá</span>
+                        <div class="rate-score">8.6</div>
+                    </div>
+
+                    <div class="price-box">
+                        <p class="old-price">VND 12.600.000</p>
+                        <p class="new-price">VND 8.820.000</p>
+                        <p class="tax">Đã bao gồm thuế và phí</p>
+
+                        <button class="btn">Xem chỗ trống</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <section>
+                <h2 class="section-title">NHỮNG ĐIỂM DỪNG CHÂN CHỜ BẠN KHÁM PHÁ</h2>
+                <div class="cards">
+                    <!-- card 1 -->
+                    <article class="card">
+                        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/203720383.jpg?k=957aff0b81ab65e0e9d42e42e1210d41991b29a7cbd7a967187eb1f6c1d1d86a&o=" alt="Sea view hotel"/>
+                        <div class="card-body">
+                            <div>
+                            <strong>Hon Tam Resort</strong>
+                            <div class="meta">Nha Trang, Việt Nam</div>
+                            </div>
+                            <div class="small"><span class="rating">4.7 ⭐</span> · 1.2k đánh giá</div>
+                        </div>
+                    </article>
+                    <!-- card 2 -->
+                    <article class="card">
+                        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/692162790.jpg?k=3d73c58919fc34b0cbd9ba868876039b051110040e419241307510be16886c61&o=" alt="City boutique"/>
+                        <div class="card-body">
+                            <div>
+                            <strong>Ben's Premier Hotel & Apartment</strong>
+                            <div class="meta">Hà Nội, Việt Nam</div>
+                            </div>
+                            <div class="small"><span class="rating">4.6 ⭐</span> · 900 đánh giá</div>
+                        </div>
+                    </article>
+                    <!-- card 3 -->
+                    <article class="card">
+                        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/762847831.jpg?k=fe55ee5208fbb9ccc0dd4dbd411d1a793156948fe5c68603adcd0bffdaafce4d&o=" alt="Mountain lodge"/>
+                        <div class="card-body">
+                            <div>
+                            <strong>Khu Du Lịch Sinh Thái Vườn Đá Tả Phìn</strong>
+                            <div class="meta">Sapa, Việt Nam</div>
+                            </div>
+                            <div class="small"><span class="rating">4.8 ⭐</span> · 2.1k đánh giá</div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+    </div>
+    <iframe src="footer.html" frameborder="0" style="width:100%; height:300px;"></iframe>
+</body>
+</html>
